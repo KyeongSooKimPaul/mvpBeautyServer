@@ -1,0 +1,490 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource postgresql {
+  provider = "postgresql"
+  url = "***"
+}
+
+
+
+
+model User {
+  id         Int          @id @default(autoincrement())
+  email      String       @unique
+  password   String       @default("")
+  name       String?
+  address  String @default("")
+     isKakaoSavedId   String       @default("no")
+  createdAt DateTime @default(now())
+  phonenumber String       @default("")
+   deposit   String       @default("0")
+    point   String       @default("0")
+    businesscard  String @default("")
+  approved  String @default("yes")
+recommendname  String @default("")
+recommendphonenumber  String @default("")
+sample1name  String @default("")
+sample1phonenumber  String @default("")
+sample2name  String @default("")
+sample2phonenumber  String @default("")
+
+
+ 
+  Profile    Profile[]
+
+
+ UserProfile    UserProfile[]
+
+
+ Checkpoint Checkpoint[]
+Changepoint Changepoint[]
+
+
+ Productupdate  Productupdate[]
+
+Product  Product[]
+Paidproductlist  Paidproductlist[]
+Board Board[]
+
+Ordermanageitems Ordermanageitems[]
+LikesUser LikesUser[]
+
+ProductCategory ProductCategory[]
+Keepstatus Keepstatus[]
+KeepOrder KeepOrder[]
+
+//mvpfreeproject
+
+MvpFreeProduct MvpFreeProduct []
+MvpFreeProductCategory MvpFreeProductCategory []
+MvpFreeLikesUser MvpFreeLikesUser[]
+MvpFreeBoard MvpFreeBoard[]
+ comments  Comment[]
+  Hashtag  Hashtag[]
+  BeautyCategoryData BeautyCategoryData[]
+  BeautyCategoryDataImages BeautyCategoryDataImages[]
+  BeautyCategoryDataDetails BeautyCategoryDataDetails[]
+  BeautyCategoryDataDetailsImages BeautyCategoryDataDetailsImages[]
+  BeautyCategoryDataDetailsContents BeautyCategoryDataDetailsContents[]
+  BeautyLikesUser BeautyLikesUser[]
+  RecentlyViewd RecentlyViewd[]
+  RecieverOfChat Chat[]  @relation("RecieverOfChat")
+ SenderOfChat Chat[]  @relation("SenderOfChat")
+
+
+}
+
+
+
+model Profile {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  bio       String?
+  location  String?
+  website   String?
+  avatar    String?
+  userId    Int?     
+  User      User?    @relation(fields: [userId], references: [id])
+}
+
+//jinsung
+
+//maxi plan
+
+model UserProfile {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  kakaoid       String
+  gsiid  String
+  bankname   String
+  bankaccount    String
+    businessnumber   String
+  contactemail    String
+   deposit    String
+    point    String
+  userId    Int?     
+  User      User?    @relation(fields: [userId], references: [id])
+}
+
+
+
+
+
+
+
+model Checkpoint {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  marketname String?
+  price String?
+  image String?
+  checkstatus String?
+
+  userId    Int?    
+  User      User?    @relation(fields: [userId], references: [id])
+}
+
+model Changepoint {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  price String?
+  checkstatus String?
+  userId    Int?    
+  User      User?    @relation(fields: [userId], references: [id])
+}
+
+
+
+model Productupdate {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+
+
+  prefix String?
+  postfix String?
+
+
+  userId    Int?    
+  User      User?    @relation(fields: [userId], references: [id])
+}
+
+
+
+//project
+
+model Product {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+   User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+Productpage      Productpage?     @relation(fields: [productpageId], references: [id])
+  productpageId    Int?
+        title String
+        description String
+        type String
+        brand String
+        category String
+        price Int
+        newproduct String
+        sale String
+        stock String
+        discount Int
+        variants  String
+        images  String
+
+ always String  @default("no")
+       
+       }
+       
+
+
+model Productpage {
+  id         Int          @id @default(autoincrement())
+  text String
+  Product  Product[]
+     
+}
+
+
+
+model Ordermanageitems {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  product_main_image String?
+  name String?
+  shippingfee String @default("0")
+  wholeamount String?
+  keepingamount String?
+  shipping_amount String?
+  multiorder String?
+  created_at String?
+  updated_at String?
+  item_price String?
+  paidstatus String?
+  orderaddress String  @default("no")
+  productid Int?
+  messagefromcustomer String @default("no")
+  messagefromadmin String @default("no")
+  Keepstatus Keepstatus[]
+  userId    Int?    
+  User      User?    @relation(fields: [userId], references: [id])
+}
+
+model Keepstatus {
+  id      Int      @id @default(autoincrement())
+  Ordermanageitems   Ordermanageitems    @relation(fields: [keepId], references: [id])
+  createdAt DateTime @default(now())
+  userId  Int?
+  User    User?    @relation(fields: [userId], references: [id])
+  keepId Int
+  productId String?
+  productName String?
+  productPrice String?
+  productQty String?
+  productKeepQty String?
+}
+
+
+
+model KeepOrder {
+  id      Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  userId  Int?
+  User    User?    @relation(fields: [userId], references: [id])
+  productId String?
+  orderId String?
+  productName String?
+  productPrice String?
+  productQty String?
+  productKeepQty String?
+    orderaddress String  @default("no")
+  demandproductKeepQty String @default("0")
+  messagefromcustomer String @default("no")
+  messagefromadmin String @default("no")
+    paidstatus String @default("no")
+}
+
+
+
+
+model Paidproductlist {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+   User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+        productid Int?
+        title String?
+        category String?
+        price String?
+        discount String?
+        images  String?
+  wholeamount String?
+    keepingamount String?
+  shipping_amount String?
+  updated_at String?
+  orderstatus String?
+
+       
+       }
+
+model LikesUser {
+  id      Int      @id @default(autoincrement())
+  Board   Board    @relation(fields: [boardId], references: [id])
+  likedAt DateTime @default(now())
+  userId  Int?
+  User    User?    @relation(fields: [userId], references: [id])
+  boardId Int
+}
+
+model Board {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+   User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+  title String?
+  contents String?
+   images String?   
+   likes String?   
+    LikesUser     LikesUser[]
+       }
+
+       model ProductCategory {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+   User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+  name String?
+ 
+       }
+
+
+
+
+      ////mvpFree
+
+      model MvpFreeProductCategory {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+   User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+  name String?
+ 
+       }
+
+      model MvpFreeProductpage {
+  id         Int          @id @default(autoincrement())
+  text String
+  MvpFreeProduct  MvpFreeProduct[]
+     
+}
+
+
+model MvpFreeProduct {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+   User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+MvpFreeProductpage      MvpFreeProductpage?     @relation(fields: [productpageId], references: [id])
+  productpageId    Int?
+        title String
+        description String
+        type String
+        brand String
+        category String
+        price Int
+        newproduct String
+        sale String
+        stock String
+        discount Int
+        variants  String
+        images  String
+ always String  @default("no")
+       
+       }
+
+model MvpFreeLikesUser {
+  id      Int      @id @default(autoincrement())
+  MvpFreeBoard   MvpFreeBoard    @relation(fields: [boardId], references: [id])
+  likedAt DateTime @default(now())
+  userId  Int?
+  User    User?    @relation(fields: [userId], references: [id])
+  boardId Int
+}
+
+model MvpFreeBoard {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+   User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+  title String?
+  contents String?
+   images String?   
+   likes String?   
+    MvpFreeLikesUser     MvpFreeLikesUser[]
+     comments  Comment[]
+       Hashtag  Hashtag[]
+       }
+
+
+  model Comment {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  content   String?
+  MvpFreeBoard     MvpFreeBoard?    @relation(fields: [boardId], references: [id])
+  boardId   Int?
+  User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+  comments  Comment[] @relation("CommentToComment")
+  Comment   Comment?  @relation("CommentToComment", fields: [commentId], references: [id])
+  commentId Int?
+}
+
+
+
+  model Hashtag {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  content   String?
+  MvpFreeBoard     MvpFreeBoard?    @relation(fields: [boardId], references: [id])
+  boardId   Int?
+  User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+  }
+
+//메인에 노출되는 것
+  model BeautyCategoryData {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  title   String?
+  BeautyCategoryDataImages BeautyCategoryDataImages[]
+  User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+  }
+
+//메인 노출 각 카테고리마다 나오는 이미지, 정보
+  model BeautyCategoryDataImages {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+ url String?
+   BeautyCategoryData   BeautyCategoryData    @relation(fields: [beautyId], references: [id])
+     beautyId   Int
+       User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+   title String?
+    subtitle String?
+     brandName String?
+      originalPrice String?
+         finalPrice String?
+         BeautyCategoryDataDetails BeautyCategoryDataDetails[]
+         BeautyLikesUser BeautyLikesUser[]
+         RecentlyViewd RecentlyViewd[]
+  }
+
+// 각 이미지 정보를 클릭시 뿌리는 데이터
+   model BeautyCategoryDataDetails {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+ url String?
+   BeautyCategoryDataImages   BeautyCategoryDataImages    @relation(fields: [beautyDetailId], references: [id])
+     beautyDetailId   Int
+       User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+  BeautyCategoryDataDetailsImages BeautyCategoryDataDetailsImages[]
+    BeautyCategoryDataDetailsContents BeautyCategoryDataDetailsContents[]
+  
+  
+  }
+// 상품 디테일 페이지에서 이미지 슬라이드 저장용
+  model BeautyCategoryDataDetailsImages{
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+ url String?
+   BeautyCategoryDataDetails   BeautyCategoryDataDetails    @relation(fields: [beautyDetailImageId], references: [id])
+     beautyDetailImageId   Int
+       User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+  
+  }
+
+    model BeautyCategoryDataDetailsContents{
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+ contents String?
+   BeautyCategoryDataDetails   BeautyCategoryDataDetails    @relation(fields: [beautyDetailImageId], references: [id])
+     beautyDetailImageId   Int
+       User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+  
+  }
+
+
+model BeautyLikesUser {
+  id      Int      @id @default(autoincrement())
+  BeautyCategoryDataImages   BeautyCategoryDataImages    @relation(fields: [boardId], references: [id])
+  likedAt DateTime @default(now())
+  userId  Int?
+  User    User?    @relation(fields: [userId], references: [id])
+  boardId Int
+}
+
+model RecentlyViewd {
+  id      Int      @id @default(autoincrement())
+  BeautyCategoryDataImages   BeautyCategoryDataImages    @relation(fields: [boardId], references: [id])
+  viewedAt DateTime @default(now())
+  userId  Int?
+  User    User?    @relation(fields: [userId], references: [id])
+  boardId Int
+}
+
+model  Chat {
+id Int  @id  @default(autoincrement())
+receiverId Int
+receiver User  @relation("RecieverOfChat", fields: [receiverId], references: [id])
+sender User  @relation("SenderOfChat",fields: [senderId], references: [id])
+senderId Int
+message String
+createdAt DateTime  @default(now())
+updatedAt DateTime  @default(now())
+}

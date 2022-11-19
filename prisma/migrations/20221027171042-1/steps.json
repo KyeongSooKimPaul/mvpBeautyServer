@@ -1,0 +1,252 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "DeleteModel",
+      "model": "Tweet"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "LikedTweet"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Following"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Maxiplan"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "ExchangeRate"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Deliveryfee"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Sellingprice"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Connectinfo"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Subid"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Comment"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Adminbasicplan"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Adminbasicmall"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Adminoptionfee"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Admincollectmarket"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Admincollectnation"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Admincollectcategory"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Admincommissionmarket"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Admincommissionfee"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Admincommissiontransfer"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Adminsellerfiltering"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Filtering"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Stockhandling"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Addmenual"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Privacypolicy"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Refundpolicy"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Termsanduse"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Demandpoint"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "Deliverymangeitems"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "tweets"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "likedTweet"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "comments"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Following"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "ExchangeRate"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Deliveryfee"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Sellingprice"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Subid"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Connectinfo"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Maxiplan"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Adminbasicplan"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Adminbasicmall"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Adminoptionfee"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Admincollectmarket"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Admincollectnation"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Admincollectcategory"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Admincommissionmarket"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Admincommissionfee"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Admincommissiontransfer"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Adminsellerfiltering"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Stockhandling"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Deliverymangeitems"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Filtering"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Addmenual"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Privacypolicy"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Refundpolicy"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Termsanduse"
+    }
+  ]
+}
